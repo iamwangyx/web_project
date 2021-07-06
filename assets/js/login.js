@@ -38,7 +38,7 @@ $(function() {
                     // 将登录成功的token字符串, 保存到本地存储之中
                     localStorage.setItem("token", res.token);
                     // 记录浏览历史,跳转到后台主页
-                    location.assign('/index.html');
+                    location.href = '/index.html';
                 }
             }
         });
