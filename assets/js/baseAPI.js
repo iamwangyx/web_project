@@ -6,5 +6,13 @@ $.ajaxPrefilter(function(options) {
         options.headers = {
             Authorization: localStorage.getItem('token')
         }
+    };
+    // 全局挂载complete回调函数
+    // 调用有权限的接口,请求无论成功与否,都需要调用complete回调函数,来验证身份成功与否
+    options.complete = function(res) {
+        if (res.responseJSON.status == 1 && res.responseJSON.message == '身份认证失败！') {
+            localStorage.removeItem('token');
+            location.href = '/login.html';
+        }
     }
 });

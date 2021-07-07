@@ -11,6 +11,7 @@ $(function() {
                 if (res.status != 0) {
                     return layer.msg(res.message);
                 } else {
+                    // 调用渲染用户头像的函数
                     loadAvatar(res.data);
                 }
             }
@@ -20,7 +21,6 @@ $(function() {
     function loadAvatar(user) {
         var name = null;
         name = user.name != null ? name = user.nickname : name = user.username;
-        var name = user.nickname || user.username
         $('#welcome').html('欢迎&nbsp;&nbsp;' + name)
         if (user.user_pic != null) {
             $(".layui-nav-img").attr('src', user.user_pic).stop().show();
